@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unplug & Play - E-Book</title>
-    <!-- Google Fonts: Outfit (More catchy and modern) -->
+    <!-- Google Fonts: Outfit -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #1b4332;
-            --accent-color: #e76f51;
-            --bg-color: #f8f9fa;
-            --text-color: #2b2d42;
+            --primary-blue: #1e3c72;
+            --secondary-blue: #2a5298;
+            --accent-gold: #f39c12;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-main: #2c3e50;
+            --text-muted: #7f8c8d;
         }
         * {
             box-sizing: border-box;
@@ -20,125 +23,160 @@
         body {
             font-family: 'Outfit', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-color);
+            color: var(--text-main);
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            line-height: 1.7;
         }
-        /* Top Navigation Bar */
+        
+        /* Pro Top Navigation Bar */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 30px;
+            padding: 18px 40px;
             z-index: 1000;
         }
         .nav-logo {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--primary-color);
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--primary-blue);
             text-decoration: none;
+            letter-spacing: -0.5px;
         }
         .nav-icons {
             display: flex;
-            gap: 20px;
+            gap: 25px;
         }
         .nav-icons a {
             text-decoration: none;
-            color: var(--text-color);
+            color: var(--text-main);
             font-weight: 600;
             font-size: 0.95rem;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
         }
         .nav-icons a:hover {
-            color: var(--accent-color);
+            color: var(--accent-gold);
         }
 
-        /* Header / Hero Section */
+        /* Hero Header */
         header {
-            background: linear-gradient(135deg, #1b4332, #2d6a4f);
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
             color: white;
             text-align: center;
-            padding: 120px 20px 80px 20px;
+            padding: 140px 20px 100px 20px;
+            clip-path: ellipse(150% 100% at 50% 0%);
         }
         header h1 {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             font-weight: 800;
-            margin-bottom: 10px;
-            letter-spacing: -0.5px;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
         }
         header p {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             max-width: 650px;
             margin: 0 auto;
-            opacity: 0.95;
+            opacity: 0.9;
             font-weight: 400;
         }
 
+        /* Main Container */
         .container {
-            max-width: 800px;
-            margin: -40px auto 40px auto;
+            max-width: 850px;
+            margin: -60px auto 60px auto;
             padding: 0 20px;
             position: relative;
             z-index: 10;
         }
+        
         .card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            background: var(--card-bg);
+            padding: 50px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
             text-align: center;
+            border: 1px solid rgba(0,0,0,0.04);
         }
         
-        /* Book Cover Mockup Box */
+        /* Book Cover Mockup Card */
         .book-cover {
-            background: linear-gradient(135deg, #2d6a4f, #1b4332);
+            background: linear-gradient(135deg, #111e38, var(--primary-blue));
             color: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 40px 30px;
+            border-radius: 16px;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 25px rgba(30, 60, 114, 0.2);
+            border: 2px solid rgba(243, 156, 18, 0.3);
         }
         .book-cover h3 {
-            font-size: 2rem;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
             margin: 0 0 10px 0;
             font-weight: 700;
+            text-transform: uppercase;
+        }
+        .book-cover h2 {
+            font-size: 2.8rem;
+            margin: 10px 0;
+            font-weight: 800;
+            color: white;
         }
         .book-cover p {
             margin: 0;
-            font-size: 1.1rem;
-            opacity: 0.9;
+            font-size: 1rem;
+            opacity: 0.85;
+            letter-spacing: 1px;
         }
 
-        .card h2 {
+        .card h2.main-title {
             font-weight: 700;
-            color: var(--primary-color);
-            font-size: 1.8rem;
+            color: var(--primary-blue);
+            font-size: 2rem;
+            margin-bottom: 15px;
         }
+        
+        .card > p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto 30px auto;
+        }
+
         .price-tag {
-            font-size: 2.6rem;
-            color: var(--accent-color);
+            font-size: 3rem;
+            color: var(--accent-gold);
             font-weight: 800;
-            margin: 20px 0;
+            margin: 25px 0;
+            text-shadow: 0 2px 10px rgba(243, 156, 18, 0.2);
         }
+
+        /* Features Box */
         .features {
             text-align: left;
-            margin: 30px 0;
-            background: #f4f9f4;
-            padding: 25px 30px;
-            border-radius: 14px;
-            border-left: 5px solid var(--primary-color);
+            margin: 35px 0;
+            background: #f8fafc;
+            padding: 30px 35px;
+            border-radius: 16px;
+            border-left: 6px solid var(--accent-gold);
+            border-top: 1px solid #edf2f7;
+            border-right: 1px solid #edf2f7;
+            border-bottom: 1px solid #edf2f7;
         }
         .features h3 {
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--primary-blue);
             margin-top: 0;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
         }
         .features ul {
             padding-left: 20px;
@@ -148,53 +186,69 @@
             margin-bottom: 12px;
             font-size: 1.05rem;
             font-weight: 500;
+            color: #34495e;
         }
+
+        /* Payment Box */
         .payment-box {
-            background: #fffaf0;
-            border: 2px dashed var(--accent-color);
-            padding: 30px;
-            border-radius: 14px;
-            margin-top: 30px;
+            background: #fffdf9;
+            border: 2px dashed var(--accent-gold);
+            padding: 35px;
+            border-radius: 16px;
+            margin-top: 35px;
         }
         .payment-box h3 {
-            color: var(--accent-color);
+            color: #d35400;
             margin-top: 0;
             font-weight: 700;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
         }
+        
+        /* WhatsApp Button */
         .whatsapp-btn {
             display: inline-block;
-            background-color: #25D366;
+            background-color: #27ae60;
             color: white;
-            padding: 15px 35px;
-            font-size: 1.15rem;
+            padding: 16px 40px;
+            font-size: 1.2rem;
             font-weight: 700;
             text-decoration: none;
-            border-radius: 40px;
-            margin-top: 20px;
+            border-radius: 50px;
+            margin-top: 25px;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3);
         }
         .whatsapp-btn:hover {
-            background-color: #1ebd56;
+            background-color: #219653;
             transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(39, 174, 96, 0.4);
         }
+
+        /* Footer */
         footer {
             text-align: center;
             padding: 40px;
             font-size: 0.95rem;
-            color: #6c757d;
-            border-top: 1px solid #eaeaea;
+            color: var(--text-muted);
+            border-top: 1px solid #e2e8f0;
             margin-top: 60px;
             font-weight: 400;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            .card { padding: 25px; }
+            nav { padding: 15px 20px; }
+            .book-cover h2 { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Navigation with 3 Icons/Links -->
+    <!-- Pro Navigation Bar -->
     <nav>
-        <a href="#" class="nav-logo">🌿 Unplug & Play</a>
+        <a href="#" class="nav-logo">📘 Unplug & Play</a>
         <div class="nav-icons">
             <a href="#">🏠 Home</a>
             <a href="#features-section">✨ Features</a>
@@ -202,6 +256,7 @@
         </div>
     </nav>
 
+    <!-- Hero Header -->
     <header>
         <h1>Unplug & Play</h1>
         <p>25 Power-Packed Activities To Do Without a Smartphone. Reclaim Your Time, Focus, and Creativity.</p>
@@ -209,18 +264,18 @@
 
     <div class="container">
         <div class="card">
-            <!-- Book Cover Preview Section -->
+            
+            <!-- Styled Book Cover Preview Box -->
             <div class="book-cover">
-                <h3>PART 1</h3>
-                <p>ACTIVITIES 1-25</p>
-                <h2 style="color: white; margin: 15px 0 5px 0; font-size: 2.2rem;">Unplug & Play</h2>
-                <p style="font-size: 0.95rem; opacity: 0.85;">RECLAIM YOUR TIME • FOCUS • CREATIVITY</p>
+                <h3>Part 1 • Activities 1-25</h3>
+                <h2>Unplug & Play</h2>
+                <p>RECLAIM YOUR TIME • FOCUS • CREATIVITY</p>
             </div>
 
-            <h2>Step Away from the Screen and Return to Real Life!</h2>
-            <p>An amazing e-book designed to help you break free from smartphone digital fatigue and regain your focus. No special equipment or apps required!</p>
+            <h2 class="main-title">Step Away from the Screen and Return to Real Life!</h2>
+            <p>An exclusive e-book designed to help you break free from smartphone digital fatigue and regain your deep focus. No special equipment or apps required!</p>
             
-            <div class="price-tag">Only ₹49/-</div>
+            <div class="price-tag">₹49/- Only</div>
 
             <div class="features" id="features-section">
                 <h3>What's Inside the Book:</h3>
@@ -233,12 +288,12 @@
                 </ul>
             </div>
 
-            <!-- Google Pay / UPI Payment Section -->
+            <!-- Google Pay & UPI Payment Section -->
             <div class="payment-box" id="buy-section">
                 <h3>How to Purchase?</h3>
-                <p>Transfer <strong>₹49</strong> using Google Pay / PhonePe to the number below:</p>
-                <p style="font-size: 1.5rem; font-weight: 800; color: #1b4332; margin: 10px 0;">GPay / PhonePe: 8943878180</p>
-                <p style="font-size: 0.95rem; color: #555;">After making the payment, click the button below to send the screenshot on WhatsApp. We will deliver your book instantly!</p>
+                <p style="color: var(--text-main); margin-bottom: 10px;">Transfer <strong>₹49</strong> securely via Google Pay / PhonePe to:</p>
+                <p style="font-size: 1.8rem; font-weight: 800; color: var(--primary-blue); margin: 10px 0; letter-spacing: 1px;">8943878180</p>
+                <p style="font-size: 0.95rem; color: var(--text-muted);">After making the payment, click the button below to send the screenshot on WhatsApp. We will deliver your e-book instantly!</p>
                 
                 <!-- WhatsApp Direct Link with your number -->
                 <a href="https://wa.me/918943878180?text=Hello,%2520I%2520have%2520paid%2520₹49%2520for%2520the%2520Unplug%2520and%2520Play%2520book.%2520Here%2520is%2520my%2520screenshot." class="whatsapp-btn" target="_blank">💬 Send Screenshot on WhatsApp</a>
